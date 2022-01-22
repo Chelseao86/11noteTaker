@@ -1,9 +1,9 @@
 const express = require('express');
-require('dotenv').config()
 const fs = require('fs')
 const path = require('path')
 const app = express()
 const { v4: uuidv4 } = require('uuid');
+const PORT = process.env.PORT || 3000
 
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
@@ -34,8 +34,8 @@ app.get("*",(req, res)=>{
 res.sendFile(path.join(__dirname, "./public/index.html"))
 })
 
-app.listen(process.env.PORT, ()=> {
+app.listen(PORT, ()=> {
 console.log("started server")
-console.log(process.env.PORT)
+console.log(PORT)
 }
   )
